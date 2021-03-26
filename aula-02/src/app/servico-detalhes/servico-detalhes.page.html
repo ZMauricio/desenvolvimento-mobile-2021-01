@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center"> <strong>Serviço detalhes</strong> </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Card de exibição dos dados-->
+  <ion-card *ngIf="!edicao">
+    <ion-card-header color="primary">
+      <ion-card-title class="ion-text-center"> <strong>Dados do serviço {{servico.id}}</strong> </ion-card-title>
+
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-item>
+        <ion-label position="inline"> <strong>Nome:</strong>  </ion-label>
+        <ion-input type="text" [ngModel]="servico.nome" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="inline"> <strong>Preço:</strong>  </ion-label>
+        <ion-input type="number" [ngModel]="servico.preco" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label> <strong>Descrição:</strong> </ion-label>
+        <br>
+        <ion-textarea disabled="true">{{servico.descricao}}</ion-textarea>
+      </ion-item>
+
+    </ion-card-content>
+
+
+
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button expand="block" strong="true" color="danger" (click)="deletar()">
+            Deletar
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-button expand="block" strong="true" color="warning" (click)="habilitarEdicao()">
+            Editar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-card>
+
+
+
+
+
+
+
+  <!-- Card de edição dos dados-->
+  <ion-card *ngIf="edicao">
+    <ion-card-header color="primary">
+      <ion-card-title class="ion-text-center"> <strong> Edição do serviço {{servicoEdit.id}}</strong> </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-item>
+        <ion-label position="inline"> <strong>Nome:</strong>  </ion-label>
+        <ion-input type="text" [(ngModel)]="servicoEdit.nome"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="inline"> <strong>Preço:</strong>  </ion-label>
+        <ion-input type="number" [(ngModel)]="servicoEdit.preco"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label> <strong>Descrição:</strong> </ion-label>
+        <br>
+        <ion-textarea [(ngModel)]="servicoEdit.descricao"></ion-textarea>
+      </ion-item>
+
+    </ion-card-content>
+
+
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button expand="block" strong="true" color="medium" (click)="cancelarEdicao()">
+            Cancelar
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-button expand="block" strong="true" color="success" (click)="salvar()">
+            Salvar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+  </ion-card>
+
+
+
+
+
+</ion-content>
