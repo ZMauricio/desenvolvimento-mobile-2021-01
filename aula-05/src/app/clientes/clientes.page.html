@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Motor Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar   (ionChange)="buscarNome($event)"></ion-searchbar>
+
+  <!--
+  <ion-card>
+    <ion-item>
+      <ion-label> <strong>Nome:</strong> </ion-label>
+      <ion-input type="text" name="nome" [(ngModel)]="cliente.nome"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="buscarNome()" expand="block">
+      Buscar por nome
+    </ion-button>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-item>
+      <ion-label class="ion-text-sm-left"> <strong>Nome por ordem alfabética:</strong> </ion-label>
+    </ion-item>
+
+    <ion-button (click)="buscarNomeOrdem()" expand="block">
+      Buscar nomes em ordem
+    </ion-button>
+  </ion-card>
+
+
+
+  <ion-card>
+    <ion-item>
+      <ion-label> <strong>Idade:</strong> </ion-label>
+      <ion-input type="number" name="idade" [(ngModel)]="cliente.idade"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="buscarIdade()" expand="block">
+      Buscar por idade
+    </ion-button>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-item>
+      <ion-label> <strong>Código do serviço:</strong> </ion-label>
+      <ion-input type="number" name="servico" [(ngModel)]="servicoCodigo"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="buscarClientesServico()" expand="block">
+      Buscar por serviço
+    </ion-button>
+  </ion-card>
+-->
+
+
+
+  <ion-card *ngFor="let obj of clientes">
+    <ion-card-header>
+      <ion-card-title>{{obj.nome}}</ion-card-title>
+    </ion-card-header>
+    <ion-item>
+      <ion-label>{{obj.idade}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>{{obj.cidade}}</ion-label>
+    </ion-item>
+  </ion-card>
+
+
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+
+    <ion-fab-button [routerLink]="['/cliente-novo']">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+
+  </ion-fab>
+</ion-content>

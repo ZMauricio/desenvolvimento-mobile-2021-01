@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Motor Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header color="primary">
+      <ion-card-title>Cliente novo</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+     <form #formulario="ngForm" [formGroup]="clienteForm" (ngSubmit)="salvar()">
+
+      <ion-item>
+        <ion-label>Nome</ion-label>
+
+        <ion-input type="text" placeholder="cliente" name="nome" formControlName="nome" [class.invalid]="!clienteForm.controls['nome'].valid && clienteForm.controls['nome'].touched">
+        </ion-input>
+
+
+        <small class="error-message" *ngIf="(clienteForm.get('nome')?.errors?.required || clienteForm.get('nome')?.errors?.minlength || clienteForm.get('nome')?.errors?.maxlength) && (formulario.submitted || clienteForm.controls['nome'].touched)">
+          Informe de 3 a 100 caracteres
+        </small>
+
+      </ion-item>
+
+
+
+      <ion-item>
+        <ion-label>Cidade</ion-label>
+
+        <ion-input type="text" placeholder="Cidade" name="cidade" formControlName="cidade"
+        [class.invalid]="!clienteForm.controls['cidade'].valid && clienteForm.controls['cidade'].touched" >
+
+        </ion-input>
+
+        <small class="error-message" *ngIf="clienteForm.get('cidade')?.errors?.required && (formulario.submitted || clienteForm.controls['cidade'].touched)">
+          Informe a cidade em que você reside
+        </small>
+
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>Idade</ion-label>
+        <ion-input type="number" placeholder="idade" name="idade" formControlName="idade"></ion-input>
+
+        <br>
+        <small class="error-message" *ngIf="(clienteForm.get('idade')?.errors?.required || clienteForm.get('idade')?.errors?.min) && (formulario.submitted || clienteForm.controls['idade'].touched)">
+          Informe a sua idade
+        </small>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-list>
+
+          <ion-radio-group name="genero" formControlName="genero">
+
+            <ion-list-header>
+              <ion-label> <strong>Gênero</strong>  </ion-label>
+            </ion-list-header>
+
+            <ion-item>
+              <ion-label>Masculino</ion-label>
+              <ion-radio value="m"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Feminino</ion-label>
+              <ion-radio value="f"></ion-radio>
+            </ion-item>
+
+            <small class="error-message" *ngIf="clienteForm.get('genero')?.errors?.required && (formulario.submitted || clienteForm.controls['genero'].touched)">
+              Informe o gênero
+            </small>
+
+          </ion-radio-group>
+
+        </ion-list>
+
+
+      </ion-item>
+
+
+
+
+
+      <ion-button type="submit" [disabled]="clienteForm.invalid" expand="block" color="success">
+        Salvar
+      </ion-button>
+
+     </form>
+
+
+
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>
