@@ -1,0 +1,7 @@
+{
+  "name": "aula-projeto-m01",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

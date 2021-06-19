@@ -1,0 +1,163 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Motor Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-card>
+    <ion-card-header color="primary">
+      <ion-card-title class="ion-text-center"> Junte-se a nós! </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+      <form #formulario="ngForm" (ngSubmit)="registrar(formulario)">
+
+        <ion-item>
+          <ion-label position="floating"> <strong>Nome:</strong> </ion-label>
+          <ion-input type="text" placeholder="informe o nome" #nome="ngModel" name="nome" [(ngModel)]="usuario.nome" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!nome.valid && nome.touched">
+          <ion-label color="danger">Informe o nome do usuário!</ion-label>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating"> <strong>E-mail:</strong> </ion-label>
+          <ion-input type="email" placeholder="informe o e-mail" #email="ngModel" name="email" [(ngModel)]="usuario.email" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!email.valid && email.touched">
+          <ion-label color="danger">Informe o e-mail corretamente!</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating"> <strong>Função:</strong> </ion-label>
+          <ion-input type="text" placeholder="informe a função" #funcao="ngModel" name="funcao" [(ngModel)]="usuario.funcao" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!funcao.valid && funcao.touched">
+          <ion-label color="danger">Infome a função!</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating"> <strong>Senha:</strong> </ion-label>
+          <ion-input type="password" placeholder="informe a senha" #senha="ngModel" name="senha" [(ngModel)]="usuario.senha" required></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!senha.valid && senha.touched">
+          <ion-label color="danger">Informe a senha!</ion-label>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating"> <strong>Confirme a senha:</strong> </ion-label>
+          <ion-input type="password" placeholder="informe a senha" #senhac="ngModel" name="senhaTeste" [(ngModel)]="senhaConfirmacao" required>
+          </ion-input>
+        </ion-item>
+        <ion-item *ngIf="!senhac.valid && senhac.touched">
+          <ion-label color="danger">Confirme a senha corretamente!</ion-label>
+        </ion-item>
+
+
+
+      <div ngModelGroup="endereco">
+
+        <ion-item>
+          <ion-label position="floating">CEP</ion-label>
+          <ion-input type="text" placeholder="informe o CEP" name="cep" [(ngModel)]="usuario.cep" #cep="ngModel" (ionBlur)="obterEndereco($event.target, formulario)" required></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!cep.valid && cep.touched">
+          <ion-label color="danger">Informe o CEP!</ion-label>
+        </ion-item>
+
+
+
+        <ion-item>
+          <ion-label position="floating">Rua</ion-label>
+          <ion-input type="text" placeholder="informe a rua" name="rua" [(ngModel)]="usuario.rua" #rua="ngModel" required></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!rua.valid && rua.touched">
+          <ion-label color="danger">Informe a rua!</ion-label>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating">Número</ion-label>
+          <ion-input type="number" placeholder="informe o número" name="numero" [(ngModel)]="usuario.numero" #numero="ngModel" required></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!numero.valid && numero.touched">
+          <ion-label color="danger">Informe o número!</ion-label>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating">Bairro</ion-label>
+          <ion-input type="text" placeholder="informe o bairro" name="bairro" [(ngModel)]="usuario.bairro" #bairro="ngModel" required></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!bairro.valid && bairro.touched">
+          <ion-label color="danger">Informe o bairro!</ion-label>
+        </ion-item>
+
+
+
+        <ion-item>
+          <ion-label position="floating">Cidade</ion-label>
+          <ion-input type="text" placeholder="informe a cidade" name="cidade" [(ngModel)]="usuario.cidade" #cidade="ngModel" required></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!cidade.valid && cidade.touched">
+          <ion-label color="danger">Informe a cidade!</ion-label>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating">Estado</ion-label>
+          <ion-input type="text" placeholder="informe o estado" name="estado" [(ngModel)]="usuario.estado" #estado="ngModel" required></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!estado.valid && estado.touched">
+          <ion-label color="danger">Informe o estado!</ion-label>
+        </ion-item>
+
+
+      </div>
+
+
+
+        <ion-grid fixed>
+          <ion-row>
+
+            <ion-col size="6">
+              <ion-button expand="block" color="medium" shape="round" [routerLink]="['/login']">
+                Cancelar
+              </ion-button>
+            </ion-col>
+
+            <ion-col size="6">
+              <ion-button type="submit" [disabled]="!formulario.valid" expand="block" color="success" shape="round">
+                Salvar
+              </ion-button>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+
+      </form>
+
+
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

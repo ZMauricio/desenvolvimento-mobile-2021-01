@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Motor Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header color="primary">
+      <ion-card-title>Bem vindo!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+      <form #formulario="ngForm" (ngSubmit)="logar(formulario)">
+
+        <ion-item>
+          <ion-label position="floating"> <strong>E-mail:</strong> </ion-label>
+          <ion-input type="email" name="email" #email="ngModel" placeholder="informe o e-mail" [(ngModel)]="usuario.email" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!email.valid && email.touched">
+          <ion-label color="danger">Informe o e-mail corretamente!</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating"> <strong>Senha:</strong> </ion-label>
+          <ion-input type="password" name="senha" #senha="ngModel" placeholder="informe a senha" [(ngModel)]="usuario.senha" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="!senha.valid && senha.touched">
+          <ion-label color="danger">Informe a senha correta!</ion-label>
+        </ion-item>
+
+        <ion-button type="submit" [disabled]="!formulario.valid" expand="block" color="primary" shape="round">
+          Logar
+        </ion-button>
+
+        <ion-button expand="block" color="medium" shape="round" [routerLink]="['/signin']">
+          Registrar
+        </ion-button>
+
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
